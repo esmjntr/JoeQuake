@@ -1,4 +1,8 @@
-﻿
+﻿## About this branch
+
+This branch adds support for ffmpeg capturing. See capture_ffmpeg.md for details.
+
+
 ## Description
 
 JoeQuake is a custom Quake engine designed exclusively for speedrunning.  
