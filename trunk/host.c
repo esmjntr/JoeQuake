@@ -21,9 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 #include "bgmusic.h"
-#ifdef _WIN32
 #include "movie.h"
-#endif
 #ifndef GLQUAKE
 #include "r_local.h"
 #endif
@@ -1116,6 +1114,13 @@ void Host_Shutdown (void)
 		return;
 	}
 	isdown = true;
+
+	if (Movie_IsActive ())
+	{
+		Con_Printf ("Finishing capture before exit (this may take up to 30 seconds)...\n");
+		Movie_CancelCaptureStats ();
+		Movie_Stop ();
+	}
 
 // keep Con_Printf from trying to update the screen
 	scr_disabled_for_loading = true;
